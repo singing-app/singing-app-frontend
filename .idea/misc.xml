@@ -8,6 +8,7 @@
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_camera.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_chart.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_mypage.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_pitch.xml" value="0.378125" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_store.xml" value="0.378125" />
@@ -19,6 +20,7 @@
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_chart.xml" value="0.2046875" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_gallery.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_home.xml" value="0.2907608695652174" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_mypage.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_pitch.xml" value="0.2046875" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_slideshow.xml" value="0.2907608695652174" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_store.xml" value="0.20208333333333334" />
