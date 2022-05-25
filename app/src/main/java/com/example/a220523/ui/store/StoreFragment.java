@@ -1,4 +1,4 @@
-package com.example.a220523.ui.pitch;
+package com.example.a220523.ui.store;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,23 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.a220523.databinding.FragmentPitchBinding;
+import com.example.a220523.databinding.FragmentStoreBinding;
 
-public class PitchFragment extends Fragment {
+public class StoreFragment extends Fragment {
 
-    private PitchViewModel PitchViewModel;
-    private FragmentPitchBinding binding;
+    private StoreViewModel storeViewModel;
+    private FragmentStoreBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        PitchViewModel =
-                new ViewModelProvider(this).get(PitchViewModel.class);
+        storeViewModel =
+                new ViewModelProvider(this).get(StoreViewModel.class);
 
-        binding = FragmentPitchBinding.inflate(inflater, container, false);
+        binding = FragmentStoreBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textPitch;
-        PitchViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textStore;
+        storeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

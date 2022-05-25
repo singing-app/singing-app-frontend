@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chart.ChartFragment">
+    tools:context=".ui.store.StoreFragment">
 
     <TextView
-        android:id="@+id/text_chart"
+        android:id="@+id/text_store"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

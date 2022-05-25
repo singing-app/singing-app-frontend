@@ -8,17 +8,25 @@
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_camera.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_chart.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_pitch.xml" value="0.378125" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_store.xml" value="0.378125" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/ic_menu_tag.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/drawable/side_nav_bar.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/app_bar_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/content_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_chart.xml" value="0.2046875" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_gallery.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_home.xml" value="0.2907608695652174" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_pitch.xml" value="0.2046875" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_slideshow.xml" value="0.2907608695652174" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_store.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/fragment_tag.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/layout/nav_header_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/menu/activity_main_drawer.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/menu/main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/wku/Desktop/singing/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.378125" />
       </map>
     </option>
   </component>
