@@ -9,8 +9,8 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_pitch">최고음 측정</string>
+    <string name="menu_tag">음역대 태그</string>
     <string name="menu_store">노래 보관</string>
     <string name="menu_chart">음원 차트</string>
-    <string name="menu_tag">음원 태그</string>
     <string name="menu_mypage">마이페이지</string>
 </resources>
