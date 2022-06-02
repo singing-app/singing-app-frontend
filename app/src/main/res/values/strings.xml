@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">방구석 노래방</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">방구석 박효신</string>
+    <string name="nav_header_subtitle">park@wku.ac.kr</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_pitch">최고음 측정</string>
+    <string name="menu_tag">음역대 태그</string>
+    <string name="menu_store">노래 보관</string>
+    <string name="menu_chart">음원 차트</string>
+    <string name="menu_mypage">마이페이지</string>
+
+    <string name="tag_2F">#2옥 파</string>
+    <string name="tag_2G">#2옥 솔</string>
+    <string name="tag_2A">#2옥 라</string>
+    <string name="tag_2B">#2옥 시</string>
+    <string name="tag_3C">#3옥 도</string>
+    <string name="tag_3D">#3옥 레</string>
+    <string name="tag_3E">#3옥 미</string>
+    <string name="tag_3F">#3옥 파</string>
+    <string name="tag_3G">#3옥 솔</string>
+    <string name="tag_3A">#3옥 라</string>
+    <string name="num">숫자</string>
+    <string name="music_title">제목:</string>
+    <string name="music_singer">가수:</string>
+    <string name="music_pitch">최고음:</string>
+    <string name="music_title_insert">제목 입력</string>
+    <string name="music_singer_insert">가수 입력</string>
+    <string name="music_pitch_insert">최고음 입력</string>
+    <string name="text_action_1"> 노래 보관 </string>
+</resources>

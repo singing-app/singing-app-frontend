@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/icon5"
+            android:fontFamily="@font/asdfsadf"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_pitch"
+            android:icon="@drawable/icon2"
+            android:fontFamily="@font/asdfsadf"
+            android:title="@string/menu_pitch" />
+        <item
+            android:id="@+id/nav_tag"
+            android:icon="@drawable/icon4"
+            android:title="@string/menu_tag" />
+        <item
+            android:id="@+id/nav_store"
+            android:icon="@drawable/icon3"
+            android:title="@string/menu_store" />
+        <item
+            android:id="@+id/nav_chart"
+            android:icon="@drawable/icon1"
+            android:title="@string/menu_chart" />
+
+        <item
+            android:id="@+id/nav_mypage"
+            android:icon="@drawable/icon6"
+            android:title="@string/menu_mypage" />
+    </group>
+</menu>

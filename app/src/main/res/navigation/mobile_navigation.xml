@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.a220523.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_pitch"
+        android:name="com.example.a220523.ui.pitch.PitchFragment"
+        android:label="@string/menu_pitch"
+        tools:layout="@layout/fragment_pitch" />
+    <fragment
+        android:id="@+id/nav_tag"
+        android:name="com.example.a220523.ui.tag.TagFragment"
+        android:label="@string/menu_tag"
+        tools:layout="@layout/fragment_tag" />
+    <fragment
+        android:id="@+id/nav_store"
+        android:name="com.example.a220523.ui.store.StoreFragment"
+        android:label="@string/menu_store"
+        tools:layout="@layout/fragment_store" />
+    <fragment
+        android:id="@+id/nav_chart"
+        android:name="com.example.a220523.ui.chart.ChartFragment"
+        android:label="@string/menu_chart"
+        tools:layout="@layout/fragment_chart" />
+    <fragment
+        android:id="@+id/nav_mypage"
+        android:name="com.example.a220523.ui.mypage.MypageFragment"
+        android:label="@string/menu_mypage"
+        tools:layout="@layout/fragment_mypage" />
+</navigation>
