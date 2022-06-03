@@ -10,4 +10,7 @@
     <color name="GREEN">#00FF00</color>
     <color name="icon_tint">#666666</color>
     <color name="pink_700">#ff0054</color>
+    <color name="my_gray">#808080</color>
+    <color name="Cwhite">#E2E5DE</color>
+    <color name="DarkerGray">#676767</color>
 </resources>

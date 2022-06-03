@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SubActivity">
 
 
     <LinearLayout
@@ -13,7 +13,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:padding="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,104 +24,108 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:paddingRight="10dp"/>
+            android:paddingRight="12dp"
+            android:paddingLeft="12dp"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="8"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1">
+            android:layout_gravity="center_vertical">
 
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <LinearLayout
+                android:id="@+id/imageBorder"
+                android:background="@drawable/round_background_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="1dp"
+                android:layout_marginRight="20dp">
 
-                android:layout_margin="4dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="5dp"
+                    tools:srcCompat="@drawable/icon_cd" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="0"
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/music_title" />
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="3dp">
 
                     <TextView
                         android:id="@+id/text_title_insert"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="50"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="@string/music_title_insert" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/music_singer" />
 
                     <TextView
                         android:id="@+id/text_singer_insert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="50"
+                        android:textStyle="bold"
+                        android:textColor="@color/my_gray"
                         android:text="@string/music_singer_insert" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
                     <TextView
-                        android:id="@+id/text_pitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/music_pitch" />
+                        android:textStyle="bold"
+                        android:textColor="@color/my_gray"
+                        android:text="  /  "/>
 
-                    <TextView
+                   <TextView
                         android:id="@+id/text_pitch_insert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="50"
+                        android:textStyle="bold"
+                        android:textColor="@color/my_gray"
                         android:text="@string/music_pitch_insert" />
+
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
 
-        <ToggleButton
-            android:id="@+id/button_favorite"
+        <FrameLayout
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_gravity="right">
 
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/button_favorite"
-            android:checked="false"
-            android:text=""
-            android:textOff=""
-            android:textOn="" />
-
+            <ToggleButton
+                android:id="@+id/button_favorite"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/button_favorite"
+                android:layout_gravity="center"
+                android:checked="false"
+                android:text=""
+                android:textOff=""
+                android:textOn="" />
+        </FrameLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

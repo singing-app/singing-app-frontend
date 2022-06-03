@@ -121,7 +121,7 @@ public class TagFragment extends Fragment {
                                     mfriendItems.clear();
                                     /* adapt data */
                                     for (Map.Entry<String, Object> elem : tempDBMap.entrySet()) {
-                                        mfriendItems.add(new FriendItem(String.valueOf(cnt), R.drawable.pancake, String.valueOf(elem.getValue()), elem.getKey(), document.getId(), tOctave));
+                                        mfriendItems.add(new FriendItem(String.valueOf(cnt), R.drawable.icon_cd, elem.getKey(), String.valueOf(elem.getValue()), document.getId(), tOctave));
                                         cnt++;
                                         // Log.d(TAG, "Tag - octave text: " + document.getId());
                                     }

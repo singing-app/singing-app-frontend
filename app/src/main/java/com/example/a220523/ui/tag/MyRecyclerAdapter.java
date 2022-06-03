@@ -38,8 +38,8 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
             if (Integer.valueOf(temp.getTxt_num()) < 10 ){
                 temp.setTxt_num("0"+temp.getTxt_num());
             }
-            this.mFriendList.add(new FriendItem(temp.getTxt_num(), temp.getResourceId(), temp.getText_singer_insert(),
-                    temp.getText_title_insert(), temp.getText_pitch_insert(), temp.getOctave()));
+            this.mFriendList.add(new FriendItem(temp.getTxt_num(), temp.getResourceId(), temp.getText_title_insert(),
+                    temp.getText_singer_insert(), temp.getText_pitch_insert(), temp.getOctave()));
         }
         notifyDataSetChanged();
     }
@@ -84,7 +84,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         }
 
         void onBind(FriendItem item){
-            String octaveAndPitch = item.getOctave() + item.getText_pitch_insert();
+            String octaveAndPitch = item.getOctave() + "타브 " + item.getText_pitch_insert();
 
             imageView.setImageResource(item.getResourceId());
             txt_num.setText(item.getTxt_num());

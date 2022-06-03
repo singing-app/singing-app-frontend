@@ -32,4 +32,6 @@
     <string name="music_singer_insert">가수 입력</string>
     <string name="music_pitch_insert">최고음 입력</string>
     <string name="text_action_1"> 노래 보관 </string>
+
+    <string name="touch_to_start">Touch to Start</string>
 </resources>
