@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.a220523.ui.tag.TagFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -16,10 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a220523.databinding.ActivityMainBinding;
 
+import org.jsoup.select.Evaluator;
+
 public class SubActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,7 @@ public class SubActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_pitch, R.id.nav_tag, R.id.nav_store, R.id.nav_chart, R.id.nav_mypage)
                 .setOpenableLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }

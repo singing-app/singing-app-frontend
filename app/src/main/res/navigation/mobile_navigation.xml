@@ -15,7 +15,8 @@
         android:id="@+id/nav_pitch"
         android:name="com.example.a220523.ui.pitch.PitchFragment"
         android:label="@string/menu_pitch"
-        tools:layout="@layout/fragment_pitch" />
+        tools:layout="@layout/fragment_pitch" >
+    </fragment>
     <fragment
         android:id="@+id/nav_tag"
         android:name="com.example.a220523.ui.tag.TagFragment"

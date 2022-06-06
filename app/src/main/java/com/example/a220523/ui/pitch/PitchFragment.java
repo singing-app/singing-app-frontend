@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.annotation.SuppressLint;
 import android.database.Cursor;
@@ -25,6 +26,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import com.example.a220523.R;
+import com.example.a220523.SubActivity;
 import com.example.a220523.databinding.FragmentTagBinding;
 import com.example.a220523.ui.tag.TagFragment;
 import com.github.mikephil.charting.charts.LineChart;
@@ -486,9 +488,6 @@ public class PitchFragment extends Fragment implements HighPitchInterface{
         result.putString("bundleKey", Integer.toString(r));
         getParentFragmentManager().setFragmentResult("requestKey", result);
 
-        FragmentTransaction frt = requireActivity().getSupportFragmentManager().beginTransaction();
-        frt.replace(tagRoot.getId(), new TagFragment());        // error point
-        frt.commitAllowingStateLoss();
     }
 
     @Override
