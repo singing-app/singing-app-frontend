@@ -6,11 +6,17 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="light_black">#080808</color>
     <color name="white">#FFFFFFFF</color>
     <color name="GREEN">#00FF00</color>
     <color name="icon_tint">#666666</color>
     <color name="pink_700">#ff0054</color>
     <color name="my_gray">#808080</color>
     <color name="Cwhite">#E2E5DE</color>
+    <color name="cultured">#80F9F9F3</color>
     <color name="DarkerGray">#676767</color>
+    <color name="chipBackgroundColor">#808080</color>
+    <color name="chipButtonColor">#8CFFFFFF</color>
+    <color name="tagItemChartBGColor">#242526</color>
+    <color name="tagItemChartSubNameColor">#FF000000</color>
 </resources>

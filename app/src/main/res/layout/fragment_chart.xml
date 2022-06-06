@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:elevation="2dp"
+    android:elevation="3dp"
     app:cardCornerRadius="4dp"
     tools:context=".ui.chart.ChartFragment">
 
@@ -15,61 +15,53 @@
         android:orientation="horizontal"
         android:padding="4dp">
 
-        <TextView
-            android:id="@+id/txt_ranktNum"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical" />
+            android:layout_height="match_parent"
+            android:padding="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text=" 위" />
+            <TextView
+                android:id="@+id/txt_ranktNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="위" />
+
+        </LinearLayout>
 
         <com.github.siyamed.shapeimageview.CircularImageView
             android:id="@+id/img_chart"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="4dp" />
+            android:layout_margin="5dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/txt_chartTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="제목"
+                android:textStyle="bold"
+                android:textColor="@color/light_black"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="제목 : " />
-
-                <TextView
-                    android:id="@+id/txt_chartTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/txt_chartName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="가수 : " />
-
-                <TextView
-                    android:id="@+id/txt_chartName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:text="가수"
+                android:textColor="@color/light_black"/>
 
         </LinearLayout>
 

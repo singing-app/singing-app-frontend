@@ -1,40 +1,34 @@
 package com.example.a220523.ui.pitch;
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import android.Manifest;
+
 import android.annotation.SuppressLint;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.example.a220523.R;
+import com.example.a220523.databinding.FragmentTagBinding;
+import com.example.a220523.ui.tag.TagFragment;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -42,13 +36,10 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -56,8 +47,6 @@ import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.AudioProcessor;
 import be.tarsos.dsp.io.TarsosDSPAudioFormat;
-import be.tarsos.dsp.io.UniversalAudioInputStream;
-import be.tarsos.dsp.io.android.AndroidAudioPlayer;
 import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
@@ -66,7 +55,7 @@ import be.tarsos.dsp.writer.WriterProcessor;
 
 import com.example.a220523.databinding.FragmentPitchBinding;
 
-public class PitchFragment extends Fragment {
+public class PitchFragment extends Fragment implements HighPitchInterface{
     PitchFrequencyToInterval FTI = new PitchFrequencyToInterval();
     Context context;
     DbOpenHelper mDbOpenHelper;
@@ -79,6 +68,8 @@ public class PitchFragment extends Fragment {
     Button recordButton;
     // Button playButton;
     CheckBox highPitchCheckbox;
+
+    HighPitchDialogActivity customDialog;
 
     boolean isRecording = false;
     String filename = "recorded_sound.wav";
@@ -98,6 +89,9 @@ public class PitchFragment extends Fragment {
     static TimerTask task;
     int remainingTime = 0;
     float userHighPitchAvg = 0;     // 유저 최고음
+
+    boolean neverForcedMoveToTag = false;
+
 
     private TimerTask mkTimerTask() {
         setTime(0);
@@ -121,9 +115,17 @@ public class PitchFragment extends Fragment {
                         @Override
                         public void run() {
                             pitchTextView.setText("당신의 최고음은: " + FTI.FI(userHighPitchAvg));
+
+                            if(FTI.isPossibleGetTagIdx(userHighPitchAvg) && !neverForcedMoveToTag) {
+                                customDialog.show();
+                                customDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                                        WindowManager.LayoutParams.WRAP_CONTENT);
+                            }
                         }
                     });
+
                     mDbOpenHelper.insertColumn("test", userHighPitchAvg+"");
+
                     recordButton.setText("측정 시작");
                     stopRecording();
                 }
@@ -136,13 +138,18 @@ public class PitchFragment extends Fragment {
 
     private PitchViewModel PitchViewModel;
     private FragmentPitchBinding binding;
+    private FragmentTagBinding tagBinding;
+    private View root;
+    private View tagRoot;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         PitchViewModel = new ViewModelProvider(this).get(PitchViewModel.class);
 
         binding = FragmentPitchBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        tagBinding = FragmentTagBinding.inflate(inflater, container, false);
+        root = binding.getRoot();
+        tagRoot = tagBinding.getRoot();
 
         context = container.getContext();
         mDbOpenHelper = new DbOpenHelper(context);
@@ -157,6 +164,10 @@ public class PitchFragment extends Fragment {
 
         // timer.purge();
         super.onCreate(savedInstanceState);
+        customDialog = new HighPitchDialogActivity(this.context, this);
+        customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
 
         chart = (LineChart) binding.LineChart;
 
@@ -168,9 +179,9 @@ public class PitchFragment extends Fragment {
         chart.getDescription().setEnabled(true);
         Description des = chart.getDescription();
         des.setEnabled(true);
-        des.setText("Real-Time DATA");
+        /*des.setText("Real-Time DATA");
         des.setTextSize(15f);
-        des.setTextColor(Color.WHITE);
+        des.setTextColor(Color.WHITE);*/
 
 // touch gestures (false-비활성화)
         chart.setTouchEnabled(false);
@@ -192,12 +203,17 @@ public class PitchFragment extends Fragment {
         chart.getXAxis().setEnabled(true);
         chart.getXAxis().setDrawGridLines(false);
 
+        /*
         //Legend
         Legend l = chart.getLegend();
         l.setEnabled(true);
         l.setFormSize(10f); // set the size of the legend forms/shapes
         l.setTextSize(12f);
         l.setTextColor(Color.WHITE);
+        */
+
+        // disable Legend
+        chart.getLegend().setEnabled(false);
 
         //Y축
         YAxis leftAxis = chart.getAxisLeft();
@@ -208,6 +224,8 @@ public class PitchFragment extends Fragment {
 
         YAxis rightAxis = chart.getAxisRight();
         rightAxis.setEnabled(false);
+
+
 
 // don't forget to refresh the drawing
         chart.invalidate();
@@ -251,6 +269,8 @@ public class PitchFragment extends Fragment {
         highPitchCheckbox.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                recordButton.setText("측정 시작");
+                isRecording = false;
                 stopRecording();
             }
         });
@@ -268,8 +288,6 @@ public class PitchFragment extends Fragment {
         Cursor iCursor = mDbOpenHelper.selectColumns();
         while(iCursor.moveToNext()){
             @SuppressLint("Range")
-            String tempID = iCursor.getString(iCursor.getColumnIndex("userid"));
-            @SuppressLint("Range")
             String tempHighPitch = iCursor.getString(iCursor.getColumnIndex("highpitch"));
 
             userHighPitchAvg = Float.parseFloat(tempHighPitch);
@@ -278,10 +296,13 @@ public class PitchFragment extends Fragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    pitchTextView.setText("나의 음역대: "+ FTI.FI(userHighPitchAvg));
+                    final String s = "나의 최고 음정: "+ FTI.FI(userHighPitchAvg);
+                    pitchTextView.setText(s);
                 }
             });
         }
+
+
         return root;
     }
 
@@ -308,7 +329,7 @@ public class PitchFragment extends Fragment {
         // let the chart know it's data has changed
         chart.notifyDataSetChanged();
 
-        chart.setVisibleXRangeMaximum(150);
+        chart.setVisibleXRangeMaximum(100);
         // this automatically refreshes the chart (calls invalidate())
         chart.moveViewTo(data.getEntryCount(), 50f, YAxis.AxisDependency.LEFT);
     }
@@ -316,7 +337,7 @@ public class PitchFragment extends Fragment {
     public LineDataSet createSet() {
 
         LineDataSet set = new LineDataSet(null, "Real-time Line Data");
-        set.setLineWidth(1f);
+        set.setLineWidth(1.5f);
         set.setDrawValues(false);
         set.setValueTextColor(getResources().getColor(R.color.white));
         set.setColor(getResources().getColor(R.color.white));
@@ -375,7 +396,8 @@ public class PitchFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                pitchTextView.setText(pitchInHz + "");
+                                String result = FTI.FI(pitchInHz) + ": " + pitchInHz;
+                                pitchTextView.setText(result);
                                 addEntry(datanum);
                             }
                         });
@@ -445,8 +467,7 @@ public class PitchFragment extends Fragment {
 
     public void releaseDispatcher() {
         if (dispatcher != null) {
-            if (!dispatcher.isStopped())
-                dispatcher.stop();
+            if (!dispatcher.isStopped()) dispatcher.stop();
             dispatcher = null;
         }
     }
@@ -455,5 +476,28 @@ public class PitchFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onYesButtonClicked() {
+        int r = FTI.getTagIdxByInterval(userHighPitchAvg);
+
+        Bundle result = new Bundle();
+        result.putString("bundleKey", Integer.toString(r));
+        getParentFragmentManager().setFragmentResult("requestKey", result);
+
+        FragmentTransaction frt = requireActivity().getSupportFragmentManager().beginTransaction();
+        frt.replace(tagRoot.getId(), new TagFragment());        // error point
+        frt.commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onNoButtonClicked() {
+
+    }
+
+    @Override
+    public void onNevCheckBoxChanged(boolean isChecked){
+        neverForcedMoveToTag = isChecked;
     }
 }

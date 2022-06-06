@@ -13,8 +13,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:paddingRight="12dp"
-            android:paddingLeft="12dp"/>
+            android:paddingLeft="12dp"
+            android:textColor="@color/tagItemChartSubNameColor"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -45,8 +47,8 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
                     android:scaleType="centerCrop"
                     android:layout_margin="5dp"
                     tools:srcCompat="@drawable/icon_cd" />
@@ -72,6 +74,7 @@
                         android:layout_weight="1"
                         android:textColor="@color/black"
                         android:textStyle="bold"
+                        android:textSize="15sp"
                         android:text="@string/music_title_insert" />
 
                 </LinearLayout>
@@ -85,23 +88,21 @@
                         android:id="@+id/text_singer_insert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/my_gray"
+                        android:textColor="@color/tagItemChartSubNameColor"
                         android:text="@string/music_singer_insert" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:textColor="@color/my_gray"
+                        android:textColor="@color/tagItemChartSubNameColor"
                         android:text="  /  "/>
 
                    <TextView
                         android:id="@+id/text_pitch_insert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/my_gray"
+                       android:textColor="@color/tagItemChartSubNameColor"
                         android:text="@string/music_pitch_insert" />
 
                 </LinearLayout>
