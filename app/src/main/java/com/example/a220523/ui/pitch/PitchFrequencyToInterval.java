@@ -1,5 +1,7 @@
 package com.example.a220523.ui.pitch;
 
+import android.util.Log;
+
 public class PitchFrequencyToInterval {
     float[][] FreqList;
     float[] FreqListNoSharp;     // No sharp, only one dimension.
@@ -89,21 +91,21 @@ public class PitchFrequencyToInterval {
         return status;
     }
 
-    public int getTagIdxByInterval(float itv){      // input itv(interval) must be 77.7817 <= itv >= 174.6141
-        final float targetItv = itv;
+    public int getTagIdxByInterval(float itv){      // input itv(interval) must be 87.3071 <= itv >= 220.0000
         final int tagMinIntervalIdx = 10;
         final int tagMaxIntervalIdx = 19;
         int result = 0;
-
-        if(targetItv < 77.7817f || targetItv > 174.6141f)       // error catch
+        // Log.d("Tag", "itv: " + itv);
+        if(itv < 87.3071f || itv > 220.0000f)       // error catch
             return -1;
 
-        for(int i = tagMaxIntervalIdx; i <= tagMaxIntervalIdx + 1; i++){
-            if(targetItv < FreqListNoSharp[i]){
+        for(int i = tagMinIntervalIdx; i <= tagMaxIntervalIdx + 1; i++){
+            if(itv < FreqListNoSharp[i]){
                 result = i - tagMinIntervalIdx - 1;
                 break;
             }
         }
+
         return result;
     }
 

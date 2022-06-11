@@ -3,6 +3,7 @@ package com.example.a220523.ui.pitch;
 import android.content.Context;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -376,6 +377,7 @@ public class PitchFragment extends Fragment implements HighPitchInterface{
                 task = mkTimerTask();
                 timer.scheduleAtFixedRate(task, 10, 1000);
             }
+
             PitchDetectionHandler pitchDetectionHandler = new PitchDetectionHandler() {
                 @Override
                 public void handlePitch(PitchDetectionResult res, AudioEvent e) {
@@ -486,9 +488,10 @@ public class PitchFragment extends Fragment implements HighPitchInterface{
         result.putString("bundleKey", Integer.toString(r));
         getParentFragmentManager().setFragmentResult("requestKey", result);
 
-        FragmentTransaction frt = requireActivity().getSupportFragmentManager().beginTransaction();
+        /* FragmentTransaction frt = requireActivity().getSupportFragmentManager().beginTransaction();
         frt.replace(tagRoot.getId(), new TagFragment());        // error point
         frt.commitAllowingStateLoss();
+        */
     }
 
     @Override
